@@ -113,4 +113,5 @@ ul {
     background: white;
     border-radius: 0 0 10px 10px;
     box-shadow: 0 8px 8px 0 #00000026;
+    z-index: 4;
 }
