@@ -16,11 +16,14 @@ function SearchBar(props) {
 
     async function getSearchData() {
         try {
-            const data = await axios.get("http://dataservice.accuweather.com/locations/v1/cities/autocomplete?apikey=R8APxdI4JGLh8D0vu4Nf7cYKcCb0BFKH&q=" + value);
+            const data = await axios.get("https://dataservice.accuweather.com/locations/v1/cities/autocomplete?apikey=jEX7jH55jm9pMOqT17m0oaUPQmfJKGK7&q=" + value);
             const newArray = Array.from(data.data);
             dispatch(getData(newArray))
         } catch (e) {
-            console.log(e)
+            if (!error) {
+                alert("50 request limited")
+                setError(true);
+            }
         }
     }
 

@@ -22,7 +22,7 @@ function HomeSearchResult(props) {
 
     async function getCurrentDefaultWeatherDegree() {
         try {
-            const dataOfWeather = await axios.get("http://dataservice.accuweather.com/currentconditions/v1/" + props.match.params.key + "?apikey=R8APxdI4JGLh8D0vu4Nf7cYKcCb0BFKH");
+            const dataOfWeather = await axios.get("https://dataservice.accuweather.com/currentconditions/v1/" + props.match.params.key + "?apikey=jEX7jH55jm9pMOqT17m0oaUPQmfJKGK7");
             setDataForFavorite(dataOfWeather.data[0])
             if (selector.weatherDegree.isFOn) {
                 setDefaultWeather(dataOfWeather.data[0].Temperature.Imperial.Value);
@@ -30,7 +30,10 @@ function HomeSearchResult(props) {
                 setDefaultWeather(dataOfWeather.data[0].Temperature.Metric.Value);
             }
         }catch (e) {
-            console.log(e)
+            if (!error) {
+                alert("50 request limited")
+                setError(true);
+            }
         }
 
     }
@@ -43,11 +46,14 @@ function HomeSearchResult(props) {
 
     async function getCityWeatherDataForFiveDays() {
         try{
-            const data = await axios.get("http://dataservice.accuweather.com/forecasts/v1/daily/5day/" + props.match.params.key + "?apikey=R8APxdI4JGLh8D0vu4Nf7cYKcCb0BFKH&details=true");
+            const data = await axios.get("https://dataservice.accuweather.com/forecasts/v1/daily/5day/" + props.match.params.key + "?apikey=jEX7jH55jm9pMOqT17m0oaUPQmfJKGK7&details=true");
             setFiveDaysWeather(data.data.DailyForecasts);
             setHead(data.data.Headline.Category);
         } catch (e) {
-            console.log(e)
+            if (!error) {
+                alert("50 request limited")
+                setError(true);
+            }
         }
 
     }

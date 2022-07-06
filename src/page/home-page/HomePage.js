@@ -37,20 +37,23 @@ function HomePage(props) {
 
     async function getCityWeatherDataForFiveDays(id) {
         try {
-            const data = await axios.get("http://dataservice.accuweather.com/forecasts/v1/daily/5day/" + id + "?apikey=R8APxdI4JGLh8D0vu4Nf7cYKcCb0BFKH&details=true");
+            const data = await axios.get("https://dataservice.accuweather.com/forecasts/v1/daily/5day/" + id + "?apikey=jEX7jH55jm9pMOqT17m0oaUPQmfJKGK7&details=true");
             setFiveDaysWeather(data.data.DailyForecasts);
             setHead(data.data.Headline.Category);
         } catch (e) {
-            console.log(e)
+            if (!error) {
+                alert("50 request limited")
+                setError(true);
+            }
         }
 
     }
 
     async function getDefaultWeather() {
         try {
-            const data = await axios.get("http://dataservice.accuweather.com/locations/v1/cities/geoposition/search?apikey=R8APxdI4JGLh8D0vu4Nf7cYKcCb0BFKH&q=32.14577077248564%2C%2034.702958497707336&details=true");
+            const data = await axios.get("https://dataservice.accuweather.com/locations/v1/cities/geoposition/search?apikey=jEX7jH55jm9pMOqT17m0oaUPQmfJKGK7&q=32.14577077248564%2C%2034.702958497707336&details=true");
             const dataArray = data.data;
-            const dataOfWeather = await axios.get("http://dataservice.accuweather.com/currentconditions/v1/" + dataArray.Key + "?apikey=R8APxdI4JGLh8D0vu4Nf7cYKcCb0BFKH");
+            const dataOfWeather = await axios.get("https://dataservice.accuweather.com/currentconditions/v1/" + dataArray.Key + "?apikey=jEX7jH55jm9pMOqT17m0oaUPQmfJKGK7");
 
             setDataForFavorite(dataOfWeather.data[0])
             if (selector.weatherDegree.isFOn) {
@@ -62,7 +65,10 @@ function HomePage(props) {
 
             await getCityWeatherDataForFiveDays(dataArray.Key);
         } catch (e) {
-            console.log(e)
+            if (!error) {
+                alert("50 request limited")
+                setError(true);
+            }
         }
 
     }
@@ -73,7 +79,10 @@ function HomePage(props) {
             dispatch(pushData(newFavorite))
             setInFavorite(true);
         } catch (e) {
-            console.log(e)
+            if (!error) {
+                alert("50 request limited")
+                setError(true);
+            }
         }
     }
 
