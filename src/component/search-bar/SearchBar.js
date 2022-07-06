@@ -20,10 +20,7 @@ function SearchBar(props) {
             const newArray = Array.from(data.data);
             dispatch(getData(newArray))
         } catch (e) {
-            if (!error) {
-                alert("50 request limited")
-                setError(true);
-            }
+            console.log(e)
         }
     }
 

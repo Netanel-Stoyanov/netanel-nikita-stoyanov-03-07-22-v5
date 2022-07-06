@@ -30,10 +30,7 @@ function HomeSearchResult(props) {
                 setDefaultWeather(dataOfWeather.data[0].Temperature.Metric.Value);
             }
         }catch (e) {
-            if (!error) {
-                alert("50 request limited")
-                setError(true);
-            }
+            console.log(e)
         }
 
     }
@@ -50,10 +47,7 @@ function HomeSearchResult(props) {
             setFiveDaysWeather(data.data.DailyForecasts);
             setHead(data.data.Headline.Category);
         } catch (e) {
-            if (!error) {
-                alert("50 request limited")
-                setError(true);
-            }
+            console.log(e)
         }
 
     }

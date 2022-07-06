@@ -41,10 +41,7 @@ function HomePage(props) {
             setFiveDaysWeather(data.data.DailyForecasts);
             setHead(data.data.Headline.Category);
         } catch (e) {
-            if (!error) {
-                alert("50 request limited")
-                setError(true);
-            }
+            console.log(e)
         }
 
     }
@@ -65,10 +62,7 @@ function HomePage(props) {
 
             await getCityWeatherDataForFiveDays(dataArray.Key);
         } catch (e) {
-            if (!error) {
-                alert("50 request limited")
-                setError(true);
-            }
+            console.log(e)
         }
 
     }
@@ -79,10 +73,7 @@ function HomePage(props) {
             dispatch(pushData(newFavorite))
             setInFavorite(true);
         } catch (e) {
-            if (!error) {
-                alert("50 request limited")
-                setError(true);
-            }
+            console.log(e)
         }
     }
 
