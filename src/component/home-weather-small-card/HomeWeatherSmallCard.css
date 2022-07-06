@@ -1,0 +1,26 @@
+.main-container-small-card {
+    display: flex;
+    width: 150px;
+    height: 250px;
+    background-color: white;
+    border-radius: 10px;
+    align-items: center;
+    flex-direction: column;
+}
+
+.day-name {
+    font-family: BiggestGarbage, sans-serif;
+    font-size: 20px;
+    font-weight: 600;
+    margin-top: 15px;
+}
+
+.degree-number {
+    margin-top: 10px;
+    font-weight: 600;
+}
+
+.mode-name {
+    margin-top: 20px;
+    font-size: 17px;
+}

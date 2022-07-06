@@ -1,0 +1,86 @@
+.main-container-weather-card {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    justify-content: space-between;
+    max-width: 1000px;
+    height: 600px;
+    background-image: url("../../../public/image/cloud-background.jpg");
+    border-radius: 20px;
+}
+
+.main-container-weather-card-dark {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    justify-content: space-between;
+    max-width: 1000px;
+    height: 600px;
+    background-image: url("../../../public/image/cloud-dark.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    border-radius: 20px;
+}
+.logo-container {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+}
+
+.header-tel-aviv {
+    margin-left: 15px;
+    cursor: default;
+    font-size: 20px;
+}
+
+.prosent {
+    margin-left: 15px;
+    margin-top: 10px;
+}
+
+.header-tel-aviv-container {
+    cursor: default;
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+
+}
+.header-tel-aviv-container-dark {
+    cursor: default;
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    color: white;
+}
+
+.header-tel-aviv-dark {
+    color: white;
+}
+
+.search-result-name-dark {
+    color: white;
+}
+.img-logo {
+    width: 100px;
+    height: 100px;
+}
+
+.left-coner {
+    display: flex;
+}
+
+.favorite-button-flex {
+   margin-top: 20px;
+    margin-right: 10px;
+}
+
+.search-result-name {
+    cursor: default;
+}
+
+.small-card-container {
+    margin-bottom: 20px;
+
+    display: flex;
+    justify-content: space-around;
+}

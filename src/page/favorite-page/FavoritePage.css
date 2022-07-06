@@ -1,0 +1,26 @@
+.main-container-favorite-dark {
+    width: 100%;
+    height: 100vh;
+    background-image: url("../../../public/image/dark-background.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.main-container-favorite-light {
+    width: 100%;
+    height: 100vh;
+    background-image: url("../../../public/image/light-background.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.fav-card-cont {
+    display: flex;
+    margin-left: 10px;
+    flex-wrap: wrap;
+    margin-top: 50px;
+}
+
+.fav-card {
+    margin-left: 10px;
+}

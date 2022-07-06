@@ -1,0 +1,116 @@
+.input-search {
+    height: 38px;
+    width: 320px;
+    left: 370px;
+    top: 7px;
+    padding-left: 40px;
+    border: 0 none;
+    border-bottom: 1px solid #E7E7E7;
+    outline: none;
+    background: white url("../../../public/image/Search-input.svg") no-repeat  7px;
+}
+
+.input-place-holder {
+    box-shadow: 0 0 8px 0 #00000026;
+    border-radius: 10px 10px 0 0 ;
+    background: white;
+    width: 320px;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+}
+
+.input-search-no-drop::placeholder{
+    color: #ADADAD;
+}
+
+.input-search::placeholder{
+    color: #ADADAD;
+}
+
+.input-search-no-drop {
+    height: 38px;
+    width: 320px;
+    left: 370px;
+    top: 7px;
+    border-radius: 10px;
+    background-size: 28px;
+    padding-left: 55px;
+    border: 0 none;
+    box-shadow: 0 0 8px 0 #00000026;
+    outline: none;
+    background: white url("../../../public/image/Search-input.svg") no-repeat 17px 7px;
+}
+
+.custom-search-input-container {
+    position: relative;
+
+}
+
+.nothing-found {
+    text-decoration: none;
+    cursor: default;
+    color: #ADADAD;
+}
+
+.nothing-found:hover {
+    text-decoration: none;
+}
+
+.show-all-href > .nothing-found {
+    color: #ADADAD;
+    text-decoration:none;
+    cursor: default;
+}
+
+.show-all-href > .nothing-found:hover {
+    color: #ADADAD;
+    text-decoration:none;
+    cursor: default;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0 0 0 10px;
+}
+
+.show-all-href > a {
+    color: #006EDD;
+    text-decoration:none;
+}
+
+.spinner-search {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.show-all-href > a:hover {
+    text-decoration: underline;
+}
+
+.txt-style-search {
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 19px;
+    text-align: left;
+    color: black;
+    margin-top: 15px;
+}
+.show-all-href {
+    margin-left: 10px;
+    color: blue;
+    margin-bottom: 10px;
+}
+
+.list-container-input {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background: white;
+    border-radius: 0 0 10px 10px;
+    box-shadow: 0 8px 8px 0 #00000026;
+}

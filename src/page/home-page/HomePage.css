@@ -1,0 +1,32 @@
+.main-container-dark-home {
+    width: 100%;
+    height: 100vh;
+    background-image: url("../../../public/image/dark-background.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.main-container-light-home {
+    width: 100%;
+    height: 100vh;
+    background-image: url("../../../public/image/light-background.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.header-home {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 250px;
+}
+
+.header-home-text {
+    color: black;
+}
+
+.header-home-text-dark {
+    color: white;
+}

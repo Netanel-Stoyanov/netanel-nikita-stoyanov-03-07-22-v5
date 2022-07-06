@@ -2,6 +2,16 @@
   text-align: center;
 }
 
+body {
+  margin: 0;
+}
+
+@font-face {
+  font-family: BiggestGarbage;
+  src: local('BiggestGarbage'), url(./font/BiggestGarbage.otf) format('opentype');
+  font-style: normal
+}
+
 .App-logo {
   height: 40vmin;
   pointer-events: none;
