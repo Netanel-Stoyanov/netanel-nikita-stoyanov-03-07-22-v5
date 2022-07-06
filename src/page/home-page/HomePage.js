@@ -104,8 +104,8 @@ function HomePage(props) {
 
 
     useEffect(() => {
-        // getDefaultWeather().then();
-        // checkIfInFavorite();
+        getDefaultWeather().then();
+        checkIfInFavorite();
     }, [defaultWeather, fiveDaysWeather, inFavorite])
 
     return(

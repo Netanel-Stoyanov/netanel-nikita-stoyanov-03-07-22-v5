@@ -82,9 +82,9 @@ function HomeSearchResult(props) {
 
 
     useEffect(() => {
-        // getCurrentDefaultWeatherDegree().then();
-        // getCityWeatherDataForFiveDays().then();
-        // checkIfInFavorite();
+        getCurrentDefaultWeatherDegree().then();
+        getCityWeatherDataForFiveDays().then();
+        checkIfInFavorite();
     }, [defaultWeather, fiveDaysWeather, inFavorite])
 
     function returnClassForBackgroundImage() {
