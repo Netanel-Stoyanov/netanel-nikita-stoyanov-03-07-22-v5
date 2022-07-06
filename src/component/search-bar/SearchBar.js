@@ -9,23 +9,28 @@ function SearchBar(props) {
 
     const [display, setDisplay] = useState("none");
     const [value, setValue] = useState("");
+    const [error, setError] = useState(false);
     const selector = useSelector((store) => store.searchBar);
     const dispatch = useDispatch();
     const history = useHistory();
 
     async function getSearchData() {
         try {
-            const data = await axios.get("http://dataservice.accuweather.com/locations/v1/cities/autocomplete?apikey=FU6JXjIdqLfLfZIjxo1vj57K2izMEPVF&q=" + value);
+            const data = await axios.get("http://dataservice.accuweather.com/locations/v1/cities/autocomplete?apikey=R8APxdI4JGLh8D0vu4Nf7cYKcCb0BFKH&q=" + value);
             const newArray = Array.from(data.data);
             dispatch(getData(newArray))
         } catch (e) {
-            //alert("50 request limited")
+            if (!error) {
+                alert("50 request limited")
+                setError(true);
+            }
         }
-
     }
 
     useEffect(() => {
-        getSearchData().then(data => console.log("ok"));
+        if (value !== "") {
+            getSearchData().then(data => console.log("ok"));
+        }
         document.addEventListener("click", (event) => {
             const searchPanel = event.target.closest(".custom-search-input-container");
             if (!searchPanel) {
@@ -38,6 +43,7 @@ function SearchBar(props) {
         return () => {
             setDisplay("none")
             setValue("")
+            setError(true)
         };
     }, [])
 

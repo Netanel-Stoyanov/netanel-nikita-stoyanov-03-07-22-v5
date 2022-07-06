@@ -74,7 +74,7 @@ function MainWeatherCard(props) {
                     <FavoriteButton onClickRemove={props.onClickRemove} onClick={props.onClickAddFavorite} isInFavorite={props.isInFavorite}/>
                 </div>
             </div>
-            <FadeIn from={"bottom"} positionOffset={400} triggerOffset={400}  durationInMilliseconds={2000}>
+            <FadeIn from={"top"} positionOffset={0} triggerOffset={0}  durationInMilliseconds={4000}>
                 <div className={"small-card-container"}>
                     {showFiveDays()}
                 </div>

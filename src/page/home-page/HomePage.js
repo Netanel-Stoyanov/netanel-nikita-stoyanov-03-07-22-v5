@@ -16,6 +16,7 @@ function HomePage(props) {
     const [inFavorite, setInFavorite] = useState(false);
     const [dataForFavorite, setDataForFavorite] = useState([])
     const [head, setHead] = useState("");
+    const [error, setError] = useState(false);
     const [id, setId] = useState("");
     const dispatch = useDispatch();
 
@@ -28,22 +29,31 @@ function HomePage(props) {
         }
     }
 
+    useEffect(() => {
+        return () => {
+            setError(true)
+        };
+    }, [])
+
     async function getCityWeatherDataForFiveDays(id) {
         try {
-            const data = await axios.get("http://dataservice.accuweather.com/forecasts/v1/daily/5day/" + id + "?apikey=FU6JXjIdqLfLfZIjxo1vj57K2izMEPVF&details=true");
+            const data = await axios.get("http://dataservice.accuweather.com/forecasts/v1/daily/5day/" + id + "?apikey=R8APxdI4JGLh8D0vu4Nf7cYKcCb0BFKH&details=true");
             setFiveDaysWeather(data.data.DailyForecasts);
             setHead(data.data.Headline.Category);
         } catch (e) {
-            //alert("50 request limited")
+            if (!error) {
+                alert("50 request limited")
+                setError(true);
+            }
         }
 
     }
 
     async function getDefaultWeather() {
         try {
-            const data = await axios.get("http://dataservice.accuweather.com/locations/v1/cities/geoposition/search?apikey=MdnloChjI6cab4WbQfTWta2wdAwUB0Gq&q=32.14577077248564%2C%2034.702958497707336&details=true");
+            const data = await axios.get("http://dataservice.accuweather.com/locations/v1/cities/geoposition/search?apikey=R8APxdI4JGLh8D0vu4Nf7cYKcCb0BFKH&q=32.14577077248564%2C%2034.702958497707336&details=true");
             const dataArray = data.data;
-            const dataOfWeather = await axios.get("http://dataservice.accuweather.com/currentconditions/v1/" + dataArray.Key + "?apikey=FU6JXjIdqLfLfZIjxo1vj57K2izMEPVF");
+            const dataOfWeather = await axios.get("http://dataservice.accuweather.com/currentconditions/v1/" + dataArray.Key + "?apikey=R8APxdI4JGLh8D0vu4Nf7cYKcCb0BFKH");
 
             setDataForFavorite(dataOfWeather.data[0])
             if (selector.weatherDegree.isFOn) {
@@ -55,7 +65,10 @@ function HomePage(props) {
 
             await getCityWeatherDataForFiveDays(dataArray.Key);
         } catch (e) {
-           // alert("50 request limited")
+            if (!error) {
+                alert("50 request limited")
+                setError(true);
+            }
         }
 
     }
@@ -66,7 +79,10 @@ function HomePage(props) {
             dispatch(pushData(newFavorite))
             setInFavorite(true);
         } catch (e) {
-            console.log(e)
+            if (!error) {
+                alert("50 request limited")
+                setError(true);
+            }
         }
     }
 
@@ -88,14 +104,14 @@ function HomePage(props) {
 
 
     useEffect(() => {
-        getDefaultWeather().then();
-        checkIfInFavorite();
+        // getDefaultWeather().then();
+        // checkIfInFavorite();
     }, [defaultWeather, fiveDaysWeather, inFavorite])
 
     return(
         <div className={returnClassForBackgroundImage()}>
             <ActionBar isChecked={selector.darkMode.isOn} type={"home"}/>
-            <FadeIn from={"bottom"} positionOffset={400} triggerOffset={400}  durationInMilliseconds={2000}>
+            <FadeIn from={"top"} positionOffset={0} triggerOffset={0}  durationInMilliseconds={2000}>
                 <div className={"inner-container"}>
                     <MainWeatherCard onClickRemove={removeFromFavorite} onClickAddFavorite={addToFavorite} isInFavorite={inFavorite} degree={defaultWeather} cityName={"Tel aviv"} fiveDays={fiveDaysWeather}/>
                 </div>
