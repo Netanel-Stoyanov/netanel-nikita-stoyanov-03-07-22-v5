@@ -22,7 +22,7 @@ function HomeSearchResult(props) {
 
     async function getCurrentDefaultWeatherDegree() {
         try {
-            const dataOfWeather = await axios.get("https://dataservice.accuweather.com/currentconditions/v1/" + props.match.params.key + "?apikey=jEX7jH55jm9pMOqT17m0oaUPQmfJKGK7");
+            const dataOfWeather = await axios.get("https://dataservice.accuweather.com/currentconditions/v1/" + props.match.params.key + "?apikey=G2PBGGx5lOGhkiQIqqpAvhjCOafWlQcc");
             setDataForFavorite(dataOfWeather.data[0])
             if (selector.weatherDegree.isFOn) {
                 setDefaultWeather(dataOfWeather.data[0].Temperature.Imperial.Value);
@@ -46,7 +46,7 @@ function HomeSearchResult(props) {
 
     async function getCityWeatherDataForFiveDays() {
         try{
-            const data = await axios.get("https://dataservice.accuweather.com/forecasts/v1/daily/5day/" + props.match.params.key + "?apikey=jEX7jH55jm9pMOqT17m0oaUPQmfJKGK7&details=true");
+            const data = await axios.get("https://dataservice.accuweather.com/forecasts/v1/daily/5day/" + props.match.params.key + "?apikey=G2PBGGx5lOGhkiQIqqpAvhjCOafWlQcc&details=true");
             setFiveDaysWeather(data.data.DailyForecasts);
             setHead(data.data.Headline.Category);
         } catch (e) {

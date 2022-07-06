@@ -37,7 +37,7 @@ function HomePage(props) {
 
     async function getCityWeatherDataForFiveDays(id) {
         try {
-            const data = await axios.get("https://dataservice.accuweather.com/forecasts/v1/daily/5day/" + id + "?apikey=jEX7jH55jm9pMOqT17m0oaUPQmfJKGK7&details=true");
+            const data = await axios.get("https://dataservice.accuweather.com/forecasts/v1/daily/5day/" + id + "?apikey=G2PBGGx5lOGhkiQIqqpAvhjCOafWlQcc&details=true");
             setFiveDaysWeather(data.data.DailyForecasts);
             setHead(data.data.Headline.Category);
         } catch (e) {
@@ -51,9 +51,9 @@ function HomePage(props) {
 
     async function getDefaultWeather() {
         try {
-            const data = await axios.get("https://dataservice.accuweather.com/locations/v1/cities/geoposition/search?apikey=jEX7jH55jm9pMOqT17m0oaUPQmfJKGK7&q=32.14577077248564%2C%2034.702958497707336&details=true");
+            const data = await axios.get("https://dataservice.accuweather.com/locations/v1/cities/geoposition/search?apikey=G2PBGGx5lOGhkiQIqqpAvhjCOafWlQcc&q=32.14577077248564%2C%2034.702958497707336&details=true");
             const dataArray = data.data;
-            const dataOfWeather = await axios.get("https://dataservice.accuweather.com/currentconditions/v1/" + dataArray.Key + "?apikey=jEX7jH55jm9pMOqT17m0oaUPQmfJKGK7");
+            const dataOfWeather = await axios.get("https://dataservice.accuweather.com/currentconditions/v1/" + dataArray.Key + "?apikey=G2PBGGx5lOGhkiQIqqpAvhjCOafWlQcc");
 
             setDataForFavorite(dataOfWeather.data[0])
             if (selector.weatherDegree.isFOn) {
