@@ -106,7 +106,7 @@ function HomePage(props) {
     useEffect(() => {
         getDefaultWeather().then();
         checkIfInFavorite();
-    }, [defaultWeather, fiveDaysWeather, inFavorite])
+    }, [])
 
     return(
         <div className={returnClassForBackgroundImage()}>

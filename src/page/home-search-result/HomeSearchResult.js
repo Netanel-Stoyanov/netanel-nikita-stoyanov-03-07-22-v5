@@ -85,7 +85,7 @@ function HomeSearchResult(props) {
         getCurrentDefaultWeatherDegree().then();
         getCityWeatherDataForFiveDays().then();
         checkIfInFavorite();
-    }, [defaultWeather, fiveDaysWeather, inFavorite])
+    }, [])
 
     function returnClassForBackgroundImage() {
         if (selector.darkMode.isOn) {
