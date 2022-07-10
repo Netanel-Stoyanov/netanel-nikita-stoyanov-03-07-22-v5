@@ -13,7 +13,7 @@ function ActionBar(props) {
     function showSearchBarIfInHomePage() {
         if (props.type === "home") {
             return (
-                <SearchBar/>
+                <SearchBar resultChange={props.resultChange}/>
             )
         }
     }

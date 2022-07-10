@@ -17,12 +17,15 @@ function HomeSearchResult(props) {
     const [head, setHead] = useState("");
     const [dataForFavorite, setDataForFavorite] = useState([])
     const [error, setError] = useState(false);
+    const [result, setResult] = useState("");
     const dispatch = useDispatch();
+
+
 
 
     async function getCurrentDefaultWeatherDegree() {
         try {
-            const dataOfWeather = await axios.get("https://dataservice.accuweather.com/currentconditions/v1/" + props.match.params.key + "?apikey=G2PBGGx5lOGhkiQIqqpAvhjCOafWlQcc");
+            const dataOfWeather = await axios.get("https://dataservice.accuweather.com/currentconditions/v1/" + props.match.params.key + "?apikey=csKyIUGEU9o5VONvA4R3WhcoQCidGRkO");
             setDataForFavorite(dataOfWeather.data[0])
             if (selector.weatherDegree.isFOn) {
                 setDefaultWeather(dataOfWeather.data[0].Temperature.Imperial.Value);
@@ -46,7 +49,7 @@ function HomeSearchResult(props) {
 
     async function getCityWeatherDataForFiveDays() {
         try{
-            const data = await axios.get("https://dataservice.accuweather.com/forecasts/v1/daily/5day/" + props.match.params.key + "?apikey=G2PBGGx5lOGhkiQIqqpAvhjCOafWlQcc&details=true");
+            const data = await axios.get("https://dataservice.accuweather.com/forecasts/v1/daily/5day/" + props.match.params.key + "?apikey=csKyIUGEU9o5VONvA4R3WhcoQCidGRkO&details=true");
             setFiveDaysWeather(data.data.DailyForecasts);
             setHead(data.data.Headline.Category);
         } catch (e) {
@@ -84,8 +87,12 @@ function HomeSearchResult(props) {
     useEffect(() => {
         getCurrentDefaultWeatherDegree().then();
         getCityWeatherDataForFiveDays().then();
-        checkIfInFavorite();
     }, [])
+
+    useEffect(() => {
+        checkIfInFavorite();
+        console.log("ok")
+    }, [result])
 
     function returnClassForBackgroundImage() {
         if (selector.darkMode.isOn) {
@@ -98,7 +105,7 @@ function HomeSearchResult(props) {
 
     return (
         <div className={returnClassForBackgroundImage()}>
-            <ActionBar isChecked={selector.darkMode.isOn} type={"home"}/>
+            <ActionBar resultChange={setResult} isChecked={selector.darkMode.isOn} type={"home"}/>
             <FadeIn from={"top"} positionOffset={0} triggerOffset={0}  durationInMilliseconds={2000}>
                 <div className={"inner-container"}>
                     <MainWeatherCard onClickRemove={removeFromFavorite} onClickAddFavorite={addToFavorite} isInFavorite={inFavorite} degree={defaultWeather} cityName={props.match.params.city} fiveDays={fiveDaysWeather}/>

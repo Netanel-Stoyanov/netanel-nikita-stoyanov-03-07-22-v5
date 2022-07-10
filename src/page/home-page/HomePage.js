@@ -17,6 +17,7 @@ function HomePage(props) {
     const [dataForFavorite, setDataForFavorite] = useState([])
     const [head, setHead] = useState("");
     const [error, setError] = useState(false);
+    const [result, setResult] = useState("");
     const [id, setId] = useState("");
     const dispatch = useDispatch();
 
@@ -29,15 +30,11 @@ function HomePage(props) {
         }
     }
 
-    useEffect(() => {
-        return () => {
-            setError(true)
-        };
-    }, [])
+
 
     async function getCityWeatherDataForFiveDays(id) {
         try {
-            const data = await axios.get("https://dataservice.accuweather.com/forecasts/v1/daily/5day/" + id + "?apikey=G2PBGGx5lOGhkiQIqqpAvhjCOafWlQcc&details=true");
+            const data = await axios.get("https://dataservice.accuweather.com/forecasts/v1/daily/5day/" + id + "?apikey=csKyIUGEU9o5VONvA4R3WhcoQCidGRkO&details=true");
             setFiveDaysWeather(data.data.DailyForecasts);
             setHead(data.data.Headline.Category);
         } catch (e) {
@@ -51,9 +48,9 @@ function HomePage(props) {
 
     async function getDefaultWeather() {
         try {
-            const data = await axios.get("https://dataservice.accuweather.com/locations/v1/cities/geoposition/search?apikey=G2PBGGx5lOGhkiQIqqpAvhjCOafWlQcc&q=32.14577077248564%2C%2034.702958497707336&details=true");
+            const data = await axios.get("https://dataservice.accuweather.com/locations/v1/cities/geoposition/search?apikey=csKyIUGEU9o5VONvA4R3WhcoQCidGRkO&q=32.14577077248564%2C%2034.702958497707336&details=true");
             const dataArray = data.data;
-            const dataOfWeather = await axios.get("https://dataservice.accuweather.com/currentconditions/v1/" + dataArray.Key + "?apikey=G2PBGGx5lOGhkiQIqqpAvhjCOafWlQcc");
+            const dataOfWeather = await axios.get("https://dataservice.accuweather.com/currentconditions/v1/" + dataArray.Key + "?apikey=csKyIUGEU9o5VONvA4R3WhcoQCidGRkO");
 
             setDataForFavorite(dataOfWeather.data[0])
             if (selector.weatherDegree.isFOn) {
@@ -108,9 +105,20 @@ function HomePage(props) {
         checkIfInFavorite();
     }, [])
 
+
+    useEffect(() => {
+        checkIfInFavorite();
+    }, [result])
+
+    useEffect(() => {
+        return () => {
+            setError(true)
+        };
+    }, [])
+
     return(
         <div className={returnClassForBackgroundImage()}>
-            <ActionBar isChecked={selector.darkMode.isOn} type={"home"}/>
+            <ActionBar resultChange={setResult} isChecked={selector.darkMode.isOn} type={"home"}/>
             <FadeIn from={"top"} positionOffset={0} triggerOffset={0}  durationInMilliseconds={2000}>
                 <div className={"inner-container"}>
                     <MainWeatherCard onClickRemove={removeFromFavorite} onClickAddFavorite={addToFavorite} isInFavorite={inFavorite} degree={defaultWeather} cityName={"Tel aviv"} fiveDays={fiveDaysWeather}/>

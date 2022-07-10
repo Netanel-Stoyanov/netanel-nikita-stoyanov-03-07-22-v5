@@ -16,7 +16,7 @@ function SearchBar(props) {
 
     async function getSearchData() {
         try {
-            const data = await axios.get("https://dataservice.accuweather.com/locations/v1/cities/autocomplete?apikey=G2PBGGx5lOGhkiQIqqpAvhjCOafWlQcc&q=" + value);
+            const data = await axios.get("https://dataservice.accuweather.com/locations/v1/cities/autocomplete?apikey=csKyIUGEU9o5VONvA4R3WhcoQCidGRkO&q=" + value);
             const newArray = Array.from(data.data);
             dispatch(getData(newArray))
         } catch (e) {
@@ -55,6 +55,7 @@ function SearchBar(props) {
     const showResult = () => {
         if (Array.from(selector.data).length > 0){
             return selector.data.map((item, index) => <li onClick={() => {
+                props.resultChange(item.Key.toString())
                 history.push("/" + item.Key + "/" + item.LocalizedName)
                 setDisplay('none')
                 setValue("");
