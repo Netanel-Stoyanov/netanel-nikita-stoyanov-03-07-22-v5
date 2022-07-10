@@ -29,7 +29,7 @@ function SearchBar(props) {
 
     useEffect(() => {
         if (value !== "") {
-            getSearchData().then(data => console.log("ok"));
+            getSearchData().then();
         }
         document.addEventListener("click", (event) => {
             const searchPanel = event.target.closest(".custom-search-input-container");
