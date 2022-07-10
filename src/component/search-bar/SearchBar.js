@@ -16,7 +16,7 @@ function SearchBar(props) {
 
     async function getSearchData() {
         try {
-            const data = await axios.get("https://dataservice.accuweather.com/locations/v1/cities/autocomplete?apikey=csKyIUGEU9o5VONvA4R3WhcoQCidGRkO&q=" + value);
+            const data = await axios.get("https://dataservice.accuweather.com/locations/v1/cities/autocomplete?apikey=yfELm2QlSIBhG0AmLdV6qYhrCNkVbMpq&q=" + value);
             const newArray = Array.from(data.data);
             dispatch(getData(newArray))
         } catch (e) {

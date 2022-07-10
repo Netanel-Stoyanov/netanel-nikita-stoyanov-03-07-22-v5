@@ -34,7 +34,7 @@ function HomePage(props) {
 
     async function getCityWeatherDataForFiveDays(id) {
         try {
-            const data = await axios.get("https://dataservice.accuweather.com/forecasts/v1/daily/5day/" + id + "?apikey=csKyIUGEU9o5VONvA4R3WhcoQCidGRkO&details=true");
+            const data = await axios.get("https://dataservice.accuweather.com/forecasts/v1/daily/5day/" + id + "?apikey=yfELm2QlSIBhG0AmLdV6qYhrCNkVbMpq&details=true");
             setFiveDaysWeather(data.data.DailyForecasts);
             setHead(data.data.Headline.Category);
         } catch (e) {
@@ -48,9 +48,9 @@ function HomePage(props) {
 
     async function getDefaultWeather() {
         try {
-            const data = await axios.get("https://dataservice.accuweather.com/locations/v1/cities/geoposition/search?apikey=csKyIUGEU9o5VONvA4R3WhcoQCidGRkO&q=32.14577077248564%2C%2034.702958497707336&details=true");
+            const data = await axios.get("https://dataservice.accuweather.com/locations/v1/cities/geoposition/search?apikey=yfELm2QlSIBhG0AmLdV6qYhrCNkVbMpq&q=32.14577077248564%2C%2034.702958497707336&details=true");
             const dataArray = data.data;
-            const dataOfWeather = await axios.get("https://dataservice.accuweather.com/currentconditions/v1/" + dataArray.Key + "?apikey=csKyIUGEU9o5VONvA4R3WhcoQCidGRkO");
+            const dataOfWeather = await axios.get("https://dataservice.accuweather.com/currentconditions/v1/" + dataArray.Key + "?apikey=yfELm2QlSIBhG0AmLdV6qYhrCNkVbMpq");
 
             setDataForFavorite(dataOfWeather.data[0])
             if (selector.weatherDegree.isFOn) {
@@ -103,12 +103,8 @@ function HomePage(props) {
     useEffect(() => {
         getDefaultWeather().then();
         checkIfInFavorite();
-    }, [])
-
-
-    useEffect(() => {
-        checkIfInFavorite();
     }, [result])
+
 
     useEffect(() => {
         return () => {
