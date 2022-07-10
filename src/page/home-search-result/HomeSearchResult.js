@@ -91,7 +91,6 @@ function HomeSearchResult(props) {
 
     useEffect(() => {
         checkIfInFavorite();
-        console.log("ok")
     }, [result])
 
     function returnClassForBackgroundImage() {
