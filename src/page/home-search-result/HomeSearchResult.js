@@ -43,7 +43,7 @@ function HomeSearchResult(props) {
 
     useEffect(() => {
         return () => {
-            setError(true)
+            setError(false)
         };
     }, [])
 

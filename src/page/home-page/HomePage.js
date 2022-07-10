@@ -108,7 +108,7 @@ function HomePage(props) {
 
     useEffect(() => {
         return () => {
-            setError(true)
+            setError(false)
         };
     }, [])
 

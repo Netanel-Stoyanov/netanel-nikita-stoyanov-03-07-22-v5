@@ -43,7 +43,7 @@ function SearchBar(props) {
         return () => {
             setDisplay("none")
             setValue("")
-            setError(true)
+            setError(false)
         };
     }, [])
 
